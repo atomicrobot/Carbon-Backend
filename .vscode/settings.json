@@ -1,0 +1,14 @@
+{
+    "debug.node.autoAttach": "on",
+    "debug.javascript.autoAttachFilter": "onlyWithFlag",
+    "rest-client.defaultHeaders": {
+        "User-Agent": "vscode-restclient",
+        "Accept-Language": "en"
+    },
+    "rest-client.environmentVariables": {
+        "$shared": {},
+        "localhost": {
+            "baseUrl": "http://localhost:3000"
+        }
+    }
+}

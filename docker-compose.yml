@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      # https://cloud.google.com/community/tutorials/cloud-run-local-dev-docker-compose
+      - ${GOOGLE_APPLICATION_CREDENTIALS}:/root/keys/keyfile.json:ro
+    environment:
+      - PORT=3000
+      - GOOGLE_APPLICATION_CREDENTIALS=/root/keys/keyfile.json
+      - GCP_SECRET_MANAGER_CONFIG_RESOURCE_ID
