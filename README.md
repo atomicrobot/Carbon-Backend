@@ -19,6 +19,7 @@ These commands are where you'll spend 95% of your time.
 - `npm install` - Needs to be run once per project and then anytime dependencies change
 - `npm run start:dev` - This starts a local server that will restart on code changes
 - `npm run test` - This runs automated tests that will rerun on code changes
+- `npm outdated` - To show what dependencies can (should!) be upgraded.
 - If you make changes to `openapi.yaml` and need to codegen (ex: the schema and types changed), run: `./util/codegenOpenAPI.sh`
 
 If you are running the app in 'production' mode, you'll need to run commands in this order to start the server:
