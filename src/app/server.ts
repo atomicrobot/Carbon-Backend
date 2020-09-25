@@ -6,8 +6,9 @@ import { Application } from 'express';
 import correlator from 'express-correlation-id';
 import responseTime from 'response-time';
 import openapiValidator from 'express-openapi-validator';
-import appRoutes from './routes';
-import { AppDependencies, buildRequestMetadata } from '@util/app';
+import appRoutes from '../routes';
+import { buildRequestMetadata } from '@app/app';
+import { AppDependencies } from '@app/config';
 
 export async function createApp(dependencies: AppDependencies): Promise<Application> {
     const app = express();

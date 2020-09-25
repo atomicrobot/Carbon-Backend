@@ -2,7 +2,7 @@ import supertest from 'supertest';
 import { StatusCodes } from 'http-status-codes';
 import { Response, SuperTest, Test } from 'supertest';
 
-import { createApp } from 'src/server';
+import { createApp } from '@app/server';
 import { buildConsoleLogger } from '@util/logger';
 
 describe('Routes', () => {

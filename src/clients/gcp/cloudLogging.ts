@@ -1,7 +1,5 @@
 import { createLogger, format } from 'winston';
-import correlator from 'express-correlation-id';
-import { AppConfig } from '@util/app';
-import { WinstonLogger } from '@util/logger';
+import { Format } from 'logform'
 import { LoggingWinston } from '@google-cloud/logging-winston';
 
 // Due to https://github.com/winstonjs/winston/issues/1660
@@ -43,33 +41,30 @@ const formatForGCP = format(info => {
     return info;
 });
 
-const logCorrelationId = format(info => {
-    const id = correlator.getId();
-    if (id) {
-        info['x-request-id'] = id;
-    }
+export interface BuilderOptions {
+    logName: string,
+    serviceName: string,
+    version: string,
+    formats: Format[]
+};
 
-    return info;
-});
+export const buildCloudLoggingLogger = (options: BuilderOptions) => {
+    const formats = [
+        format.splat(),
+        fixErrors(),
+        formatForGCP(),
+    ].concat(options.formats);
 
-export const buildCloudLoggingLogger = async (config: AppConfig) => {
-    const logger = createLogger({
-        format: format.combine(
-            format.splat(),
-            fixErrors(),
-            formatForGCP(),
-            logCorrelationId()
-        ),
+    return createLogger({
+        format: format.combine(...formats),
         transports: [
             new LoggingWinston({
-                logName: config.logName,
+                logName: options.logName,
                 serviceContext: {
-                    service: config.serviceName,
-                    version: config.buildNumber
+                    service: options.serviceName,
+                    version: options.version
                 }
             }),
         ],
     });
-
-    return new WinstonLogger(logger);
 };

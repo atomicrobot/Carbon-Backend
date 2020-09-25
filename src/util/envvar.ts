@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import commandLineArgs from 'command-line-args';
 
-export const loadPackagedEnvironmentVariables = async () => {
+export const loadPackagedEnvironmentVariables = () => {
     const options = commandLineArgs([
         {
             name: 'env',
@@ -25,5 +25,12 @@ export const loadPackagedEnvironmentVariables = async () => {
 
     if (envConfigResult.error) {
         throw envConfigResult.error;
+    }
+}
+
+export const loadEnvironmentVariablesFromMemory = async (value: string) => {
+    const parsed = dotenv.parse(value);
+    for (const key of Object.keys(parsed)) {
+        process.env[key] = parsed[key];
     }
 }
