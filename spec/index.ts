@@ -3,7 +3,7 @@ import Jasmine from 'jasmine';
 import dotenv from 'dotenv';
 import commandLineArgs from 'command-line-args';
 
-import { buildConsoleLogger } from '@util/logger'
+import { buildConsoleLogger } from '@util/logger';
 
 const testLogger = buildConsoleLogger();
 

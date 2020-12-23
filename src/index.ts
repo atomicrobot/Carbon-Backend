@@ -1,8 +1,9 @@
+import path from 'path';
 import { createApp } from '@app/server';
 import { buildAppConfig, buildAppDependencies } from '@app/config';
 
 (async () => {
-    const config = await buildAppConfig();
+    const config = await buildAppConfig(path.join(__dirname, 'openapi.yaml'));
     const appDependencies = await buildAppDependencies(config);
     const app = await createApp(appDependencies);
 

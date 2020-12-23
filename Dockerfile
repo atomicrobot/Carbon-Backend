@@ -1,5 +1,5 @@
 # See: https://cloud.google.com/run/docs/quickstarts/build-and-deploy#containerizing
-FROM node:12-slim
+FROM node:14.15.1-slim
 
 WORKDIR /usr/src/app
 COPY package*.json ./

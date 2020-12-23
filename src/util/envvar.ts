@@ -26,11 +26,11 @@ export const loadPackagedEnvironmentVariables = () => {
     if (envConfigResult.error) {
         throw envConfigResult.error;
     }
-}
+};
 
 export const loadEnvironmentVariablesFromMemory = async (value: string) => {
     const parsed = dotenv.parse(value);
     for (const key of Object.keys(parsed)) {
         process.env[key] = parsed[key];
     }
-}
+};

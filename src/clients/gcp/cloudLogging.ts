@@ -1,5 +1,5 @@
 import { createLogger, format } from 'winston';
-import { Format } from 'logform'
+import { Format } from 'logform';
 import { LoggingWinston } from '@google-cloud/logging-winston';
 
 // Due to https://github.com/winstonjs/winston/issues/1660
@@ -42,11 +42,11 @@ const formatForGCP = format(info => {
 });
 
 export interface BuilderOptions {
-    logName: string,
-    serviceName: string,
-    version: string,
-    formats: Format[]
-};
+    logName: string;
+    serviceName: string;
+    version: string;
+    formats: Format[];
+}
 
 export const buildCloudLoggingLogger = (options: BuilderOptions) => {
     const formats = [

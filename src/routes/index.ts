@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import '@models/openapi'
+import '@models/openapi';
 
 const router = Router();
 
-router.use('/api/healthcheck', (req, res) => {
+router.use('/api/v1/healthcheck', (req, res) => {
     res.status(StatusCodes.OK).send({
         buildDate: req.app.dependencies.config.buildDate,
         buildSha: req.app.dependencies.config.buildSha,

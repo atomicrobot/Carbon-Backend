@@ -9,9 +9,17 @@ Features:
 - Examples of manually testing REST API calls with RESTClient
 
 ## Project creation:
+
+Carbon-Backend was initially created using this command:
+
 `npx express-generator-typescript "project-name"`
 
+To use Carbon-Backend, just clone the repository and add your code to it.
+
 ## Local Development
+
+Ensure you're running the expected version of node. The best way to see what the project is using is to look in the Dockerfile for the node version.
+`nvm use 14.15.1`
 
 ### Commands
 
@@ -20,7 +28,9 @@ These commands are where you'll spend 95% of your time.
 - `npm run start:dev` - This starts a local server that will restart on code changes
 - `npm run test` - This runs automated tests that will rerun on code changes
 - `npm outdated` - To show what dependencies can (should!) be upgraded
-- If you make changes to `openapi.yaml` and need to codegen (ex: the schema and types changed), run: `./util/codegenOpenAPI.sh`
+- `npm run start` - This starts a server in production mode. 
+  Note: this will expect to have some environment variables configured. Run `. ./util/setupLocalServerEnvVars.sh` to setup those variables. You'll also need to make sure you've built the app first with `npm run-script build` (be aware that there hot reloading is not available in this mode).
+- If you make changes to `src/openapi.yaml` and need to codegen (ex: the schema and types changed), run: `./util/codegenOpenAPI.sh`
 
 If you are running the app in 'production' mode, you'll need to run commands in this order to start the server:
 - `export GOOGLE_APPLICATION_CREDENTIALS=some_service_account_credentials.json`

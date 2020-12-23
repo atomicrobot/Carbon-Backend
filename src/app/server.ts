@@ -5,7 +5,7 @@ import 'express-async-errors';
 import { Application } from 'express';
 import correlator from 'express-correlation-id';
 import responseTime from 'response-time';
-import openapiValidator from 'express-openapi-validator';
+import * as OpenApiValidator from 'express-openapi-validator';
 import appRoutes from '../routes';
 import { buildRequestMetadata } from '@app/app';
 import { AppDependencies } from '@app/config';
@@ -39,10 +39,14 @@ export async function createApp(dependencies: AppDependencies): Promise<Applicat
     });
 
     app.use(
-        openapiValidator({
-            apiSpec: 'openapi.yaml',
-            validateRequests: true,
-            validateResponses: true
+        OpenApiValidator.middleware({
+            apiSpec: dependencies.config.apiSpec,
+            validateRequests: {
+                allowUnknownQueryParameters: false
+            },
+            validateResponses: {
+
+            }
         }),
     );
 
@@ -55,11 +59,17 @@ export async function createApp(dependencies: AppDependencies): Promise<Applicat
     }
 
     // Global error handler
-    app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    app.use((err: any, req: Request, res: Response, next: NextFunction) => {
         dependencies.logger.error(err.message, err);
+        if (err.status !== undefined) {
+            return res.status(err.status).json({
+                message: err.message,
+            } as Components.Schemas.ApiErrorResponseBody);
+        }
+
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            error: err.message,
-        });
+            message: err.message,
+        } as Components.Schemas.ApiErrorResponseBody);
     });
 
     return app;

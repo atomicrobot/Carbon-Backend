@@ -1,6 +1,6 @@
 # Healthcheck API
 # @name healthcheck
-GET {{baseUrl}}/api/healthcheck
+GET {{baseUrl}}/api/v1/healthcheck
 Content-Type: application/json; charset=UTF-8
 Accept: application/json; charset=UTF-8
 X-Request-ID: {{$guid}}

@@ -24,9 +24,11 @@ async function loadSecretManagerEnvironmentVariables() {
 export const setupAppEnvironment: SetupAppEnvironment = async (): Promise<void> => {
     loadPackagedEnvironmentVariables();
     await loadSecretManagerEnvironmentVariables();
-}
+};
 
-export const dependencyBuilder: AppDependencyBuilder = async (config: AppConfig): Promise<AppDependencies> => {
+export const dependencyBuilder: AppDependencyBuilder = async (
+    config: AppConfig
+): Promise<AppDependencies> => {
     const error = await checkGCPConfiguration();
     if (error) {
         throw error;
@@ -35,9 +37,9 @@ export const dependencyBuilder: AppDependencyBuilder = async (config: AppConfig)
     const logger = buildLogger(config);
     return {
         config,
-        logger
-    }
-}
+        logger,
+    };
+};
 
 function buildLogger(config: AppConfig): WinstonLogger {
     const logCorrelationId = format(info => {

@@ -5,11 +5,13 @@ import { buildConsoleLogger } from '@util/logger';
 
 export const setupAppEnvironment: SetupAppEnvironment = async (): Promise<void> => {
     loadPackagedEnvironmentVariables();
-}
+};
 
-export const dependencyBuilder: AppDependencyBuilder = async (config: AppConfig): Promise<AppDependencies> => {
+export const dependencyBuilder: AppDependencyBuilder = async (
+    config: AppConfig
+): Promise<AppDependencies> => {
     return {
         config,
         logger: buildConsoleLogger()
-    }
-}
+    };
+};
