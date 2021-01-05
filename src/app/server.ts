@@ -16,6 +16,7 @@ import swaggerUi from "swagger-ui-express";
 import openApiSpec from "../openApi/openApiSpec";
 
 import TestController1 from '../controllers/TestController1';
+import TestController2 from '../controllers/TestController2';
 import HealthCheck from '../controllers/HealthCheck';
 import { Http } from 'winston/lib/winston/transports';
 import { ApiError } from '@models/responseTypes';
@@ -69,6 +70,7 @@ export async function createApp(dependencies: AppDependencies): Promise<Applicat
 
         HealthCheck,
         TestController1,
+        TestController2,
 
     ].forEach(controller => {
         // This is our instantiated class

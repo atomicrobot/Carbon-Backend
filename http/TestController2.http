@@ -1,0 +1,23 @@
+
+
+# Test Controller 2
+
+
+# @name testController2
+GET {{baseUrl}}/v1/test2/ HTTP/1.1
+
+###
+PUT {{baseUrl}}/v1/test2/doPut HTTP/1.1
+Content-Type: application/json
+
+{ "someValue": "isHere", "anotherValue": "isAlsoHere", "numericValue": 456, "booleanValue": false }
+
+###
+POST {{baseUrl}}/v1/test2/doPost HTTP/1.1
+Content-Type: application/json
+
+{ "someValue": "here", "anotherValue": "alsoHere", "numericValue": 123, "booleanValue": true }
+
+###
+DELETE {{baseUrl}}/v1/test2/doDelete/someId HTTP/1.1
+
