@@ -32,11 +32,11 @@ Ensure you're running the expected version of node. The best way to see what the
 These commands are where you'll spend 95% of your time.
 - `npm install` - Needs to be run once per project and then anytime dependencies change
 - `npm run start:dev` - This starts a local server that will restart on code changes
+- `npm run start:start-save-and-kill` - Start the server, pull down the generated openapi.json file, and kill the server. Since the server is killed, certain error messages are expected.
 - `npm run test` - This runs automated tests that will rerun on code changes
 - `npm outdated` - To show what dependencies can (should!) be upgraded
 - `npm run start` - This starts a server in production mode. 
-  Note: this will expect to have some environment variables configured. Run `. ./util/setupLocalServerEnvVars.sh` to setup those variables. You'll also need to make sure you've built the app first with `npm run-script build` (be aware that there hot reloading is not available in this mode).
-- If you make changes to `src/openapi.yaml` and need to codegen (ex: the schema and types changed), run: `./util/codegenOpenAPI.sh`
+  Note: this will expect to have some environment variables configured. --Run `. ./util/setupLocalServerEnvVars.sh` to setup those variables.-- You'll also need to make sure you've built the app first with `npm run-script build` (be aware that hot reloading is not available in this mode).
 
 If you are running the app in 'production' mode, you'll need to run commands in this order to start the server:
 - `export GOOGLE_APPLICATION_CREDENTIALS=some_service_account_credentials.json`
