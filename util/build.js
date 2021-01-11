@@ -5,6 +5,7 @@ try {
     fs.removeSync('./dist/');
 
     childProcess.exec('tsc --build tsconfig.prod.json');
+
 } catch (err) {
     console.log(err);
 }

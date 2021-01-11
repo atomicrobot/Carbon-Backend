@@ -1,4 +1,5 @@
 import supertest from 'supertest';
+import path from 'path';
 import { StatusCodes } from 'http-status-codes';
 import { Response, SuperTest, Test } from 'supertest';
 
@@ -11,14 +12,16 @@ describe('Routes', () => {
     let agent: SuperTest<Test>;
 
     beforeAll(async (done) => {
+        const apiSpec = path.join(__dirname, '../../src/openapi.yaml');
         const app = await createApp({
             config: {
+                apiSpec,
                 buildDate: 'test build date',
                 buildSha: 'test build sha',
                 buildNumber: 'test build number',
-            } as any,
-            logger: buildConsoleLogger()
-        });
+            },
+            logger: buildConsoleLogger(),
+        } as any);
 
         agent = supertest.agent(app);
         done();
