@@ -29,7 +29,8 @@ export default class TestController1 {
 
 	@Get('', 'v1')
 	public index(req: Request, res: Response) {
-		return res.status(200).json(new ApiResponse("Test1 Index"));
+		return res.status(200).json({"abc": "def"});
+		//new ApiResponse("Test1 Index")
 	}
 
 
@@ -85,6 +86,37 @@ export default class TestController1 {
 	 */
 	@Get('/third/{value}', 'v1', 'v2', 'v3')
 	public withValue(req: Request, res: Response) {
+		return res.send(new ApiResponse( { testValue: req.params.value }));
+	}
+
+
+	/**
+	 * @swagger
+	 * /test1/fourth/{value}:
+	 *   get:
+	 *     summary: Gets a test value
+	 *     operationId: GetTest1
+	 *     parameters:
+	 *     - name: value
+	 *       in: path
+	 *       description: Value to return
+	 *       required: true
+	 *       schema:
+	 *         type: number
+	 *     responses:
+	 *       200:
+	 *         description: ''
+	 *         content:
+	 *           application/json:
+	 *             schema:
+	 *               $ref: '#/components/schemas/ApiResponse'
+	 *       400:
+	 *         $ref: '#/components/responses/errorResponse'
+	 *       default:
+	 *         $ref: '#/components/responses/defaultResponse'
+	 */
+	@Get('/fourth/{value}', 'v3.1-beta1')
+	public fouthWithValue(req: Request, res: Response) {
 		return res.send(new ApiResponse( { testValue: req.params.value }));
 	}
 }

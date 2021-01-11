@@ -50,10 +50,6 @@ export async function createApp(dependencies: AppDependencies): Promise<Applicat
         next();
     });
 
-    console.log("Setting routes...");
-
-    console.log("Done setting routes");
-
     // Supporting automated testing
     if (dependencies.testingRoutes) {
         app.use(dependencies.testingRoutes);
@@ -167,7 +163,7 @@ export async function createApp(dependencies: AppDependencies): Promise<Applicat
             validateRequests: {
                 allowUnknownQueryParameters: false
             },
-            validateResponses: false
+            validateResponses: true
         })
     );
 

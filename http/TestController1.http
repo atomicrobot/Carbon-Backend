@@ -1,0 +1,17 @@
+
+
+# Test Controller 2
+
+
+# @name testController1
+GET {{baseUrl}}/v1/test1/ HTTP/1.1
+
+###
+GET {{baseUrl}}/v1/test1/second HTTP/1.1
+
+###
+GET {{baseUrl}}/v1/test1/third/123 HTTP/1.1
+
+###
+GET {{baseUrl}}/v1/test1/third/badValue HTTP/1.1
+

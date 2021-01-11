@@ -19,4 +19,4 @@ export interface RouteDefinition {
 	removedVersion?: string;
 }
 
-export let apiVersions = ["v1", "v2", "v3"];
+export let apiVersions = ["v1", "v2", "v3", "v3.1-beta1", "v3.1"];
