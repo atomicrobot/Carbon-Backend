@@ -5,9 +5,13 @@ declare namespace Components {
         }
     }
     namespace Responses {
+        export type ApiErrorResponse = Schemas.ApiErrorResponseBody;
         export type HealthcheckResponse = Schemas.HealthcheckResponseBody;
     }
     namespace Schemas {
+        export interface ApiErrorResponseBody {
+            message: string;
+        }
         export interface HealthcheckResponseBody {
             buildDate: string;
             buildSha: string;

@@ -14,7 +14,7 @@ servers:
     description: Local development server
 
 paths:
-  "/api/healthcheck":
+  "/api/v1/healthcheck":
     get:
       tags:
         - api

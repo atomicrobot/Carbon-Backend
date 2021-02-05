@@ -5,6 +5,8 @@ try {
     fs.removeSync('./dist/');
 
     childProcess.exec('tsc --build tsconfig.prod.json');
+
+    fs.copy('./src/openapi.yaml', './dist/openapi.yaml');
 } catch (err) {
     console.log(err);
 }
