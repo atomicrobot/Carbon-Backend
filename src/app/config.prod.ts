@@ -6,7 +6,7 @@ import { buildCloudLoggingLogger } from '@clients/gcp/cloudLogging';
 import { checkGCPConfiguration } from '@clients/gcp/system';
 import { loadSecret } from '@clients/gcp/secretManager';
 import { ServerError } from '@models/error';
-import { loadEnvironmentVariablesFromMemory, loadPackagedEnvironmentVariables } from '@util/envvar';
+import { loadEnvironmentVariablesFromMemory } from '@util/envvar';
 
 async function loadSecretManagerEnvironmentVariables() {
     if (process.env.GCP_SECRET_MANAGER_CONFIG_RESOURCE_ID === undefined) {
@@ -22,7 +22,6 @@ async function loadSecretManagerEnvironmentVariables() {
 }
 
 export const setupAppEnvironment: SetupAppEnvironment = async (): Promise<void> => {
-    loadPackagedEnvironmentVariables();
     await loadSecretManagerEnvironmentVariables();
 }
 

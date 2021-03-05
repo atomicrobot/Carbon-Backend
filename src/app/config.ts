@@ -1,3 +1,4 @@
+import { loadPackagedEnvironmentVariables } from '@util/envvar';
 import { AppLogger } from '@util/logger';
 import { Router } from 'express';
 
@@ -25,6 +26,8 @@ export interface AppDependencies {
 };
 
 export async function buildAppConfig(): Promise<AppConfig> {
+    loadPackagedEnvironmentVariables();
+
     if (isProduction()) {
         const { setupAppEnvironment } = await import('@app/config.prod');
         await setupAppEnvironment();
