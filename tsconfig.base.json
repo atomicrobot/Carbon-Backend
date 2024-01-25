@@ -1,0 +1,44 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "compileOnSave": false,
+    "compilerOptions": {
+        "strict": true,
+        "baseUrl": ".",
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "lib": ["ESNext"],
+        "target": "ES2022",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "noUnusedLocals": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "paths": {
+            "@app/*": ["apps/api/src/*"],
+            "@project/lib-api-app": ["lib/api-app/src/index.ts"],
+            "@project/lib-shared-fastify-plugins": [
+                "lib/shared-fastify-plugins/src/index.ts"
+            ],
+            "@project/lib-shared-fastify-plugins-mongoose": [
+                "lib/shared-fastify-plugins-mongoose/src/index.ts"
+            ],
+            "@project/lib-shared-fastify-plugins-openapi": [
+                "lib/shared-fastify-plugins-openapi/src/index.ts"
+            ],
+            "@project/lib-shared-logging": ["lib/shared-logging/src/index.ts"],
+            "@project/lib-shared-schemas": ["lib/shared-schemas/src/index.ts"],
+            "@project/lib-shared-validation": [
+                "lib/shared-validation/src/index.ts"
+            ]
+        }
+    },
+    "exclude": ["node_modules", "tmp"]
+}

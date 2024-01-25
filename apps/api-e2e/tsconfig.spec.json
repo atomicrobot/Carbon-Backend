@@ -1,0 +1,9 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../../dist/api-tsc",
+        "module": "NodeNext",
+        "types": ["jest", "node"]
+    },
+    "include": ["jest.config.ts", "src/**/*.ts"]
+}

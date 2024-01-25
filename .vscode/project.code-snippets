@@ -1,0 +1,22 @@
+{
+    "Schema Type Import": {
+        "description": "Import JSON Schema tyes",
+        "scope": "typescript",
+        "prefix": "JSON schema type import",
+        "body": ["import { Type, type Static } from '@sinclair/typebox';"],
+    },
+    "Schema Type": {
+        "description": "Create a new JSON Schema type using TypeBox",
+        "scope": "typescript",
+        "prefix": "JSON schema type",
+        "body": [
+            "export const ${1} = Type.Object(",
+            "    {$0},",
+            "    { \\$id: '${1}', additionalProperties: false },",
+            ");",
+            "export const ${1}Ref = Type.Ref(${1});",
+            "export type ${1} = Static<typeof ${1}>;",
+            "",
+        ],
+    },
+}

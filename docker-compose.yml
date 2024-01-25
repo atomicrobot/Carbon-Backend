@@ -1,0 +1,13 @@
+services:
+    database:
+        container_name: carbon-database
+        # Keep this version close to what is available on Atlas
+        image: mongo:6.0.13
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: admin
+            MONGO_INITDB_ROOT_PASSWORD: admin
+            MONGO_INITDB_DATABASE: admin
+        ports:
+            - 27017:27017
+        volumes:
+            - ./database/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
